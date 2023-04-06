@@ -4,10 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CryptoCurrencyHelper"
+        xmlns:vm="clr-namespace:CryptoCurrencyHelper.ViewModel"
         mc:Ignorable="d"
         Title="CryptoCurrencyHelper" SizeToContent="WidthAndHeight"  Height="600" Width="800"
-        ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="Transparent"
-        >
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="Transparent">
+    
+    
+    <Window.DataContext>
+        <vm:MyViewModel/>
+    </Window.DataContext>
     
     <Window.Resources>
         <Style x:Key="MenuButtonStyle" TargetType="{x:Type Button}">
@@ -19,6 +24,7 @@
         <Style x:Key="CurrencyButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Height" Value="40"/>
             <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Content" Value="White" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -92,7 +98,7 @@
             </Border>
             <!--Currency Ranking-->
             <StackPanel Orientation="Vertical" Grid.Column="1" Margin="27,65,27,65">
-                <Button Style="{StaticResource CurrencyButtonStyle}">
+                <Button Style="{StaticResource CurrencyButtonStyle}"  Content="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" FontSize="18" >
                     
                 </Button>
                 <Button  Style="{StaticResource CurrencyButtonStyle}">
@@ -125,10 +131,13 @@
             </StackPanel>
             
             <StackPanel Grid.Column="2">
-                <TextBox Margin="10,65,10,0" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
+                <TextBox Margin="10,65,10,0" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center"
+                         Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                
             </StackPanel>
         </Grid>
         
 
     </Border>
+    
 </Window>
